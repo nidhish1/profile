@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/nidhish1/profile/controller"
+	"github.com/nidhish1/profile/middlewares"
 	"github.com/nidhish1/profile/service"
 )
 
@@ -13,6 +14,7 @@ var (
 
 func main() {
 	r := gin.Default()
+	r.Use(middlewares.BasicAuth())
 
 	r.GET("/videos", func(ctx *gin.Context) {
 		ctx.JSON(200, videoController.FindAll())

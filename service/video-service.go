@@ -1,9 +1,9 @@
 package service
 
-import "gitlab.com/pragmaticreviews/golang-gin-poc/entity"
+import "github.com/nidhish1/profile/entity"
 
 type VideoService interface {
-	Save(entity.Video) entity.Video
+	Save(video entity.Video) entity.Video
 	FindAll() []entity.Video
 }
 

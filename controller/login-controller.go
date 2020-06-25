@@ -2,8 +2,8 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/nidhish/profile/dto"
-	"github.com/nidhish/profile/service"
+	"github.com/nidhish1/profile/entity"
+	"github.com/nidhish1/profile/service"
 )
 
 type LoginController interface {
@@ -24,7 +24,7 @@ func NewLoginController(loginService service.LoginService,
 }
 
 func (controller *loginController) Login(ctx *gin.Context) string {
-	var credentials dto.Credentials
+	var credentials entity.Credentials
 	err := ctx.ShouldBind(&credentials)
 	if err != nil {
 		return ""

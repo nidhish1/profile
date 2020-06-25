@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nidhish/profile/entity"
-	"github.com/nidhish/profile/service"
+	"github.com/nidhish1/profile/entity"
+	"github.com/nidhish1/profile/service"
 	"gopkg.in/go-playground/validator.v9"
 )
 

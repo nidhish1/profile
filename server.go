@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/controller"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/middlewares"
-	"gitlab.com/pragmaticreviews/golang-gin-poc/service"
+	"github.com/nidhish1/profile/controller"
+	"github.com/nidhish1/profile/middlewares"
+	"github.com/nidhish1/profile/service"
 )
 
 var (
@@ -69,7 +69,7 @@ func main() {
 	port := os.Getenv("PORT")
 	// Elastic Beanstalk forwards requests to port 5000
 	if port == "" {
-		port = "5000"
+		port = "8080"
 	}
 	server.Run(":" + port)
 }

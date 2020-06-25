@@ -3,7 +3,7 @@ package service
 import (
 	"testing"
 
-	"github.com/nidhish/profile/entity"
+	"github.com/nidhish1/profile/entity"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -13,3 +13,8 @@ type Video struct {
 	URL         string `json:"url" binding:"required,url"`
 	Author      Person `json:"author" binding:"required"`
 }
+
+type Credentials struct {
+	Username string `form:"username"`
+	Password string `form:"password"`
+}

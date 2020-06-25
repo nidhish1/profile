@@ -4,8 +4,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nidhish1/profile/entity"
-	"github.com/nidhish1/profile/service"
+	"github.com/nidhish/profile/entity"
+	"github.com/nidhish/profile/service"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 type VideoController interface {
@@ -18,26 +19,31 @@ type controller struct {
 	service service.VideoService
 }
 
-func New(service service.VideoService) VideoController {
+var validate *validator.Validate
 
+func New(service service.VideoService) VideoController {
+	validate = validator.New()
 	return &controller{
 		service: service,
 	}
 }
 
+func (c *controller) FindAll() []entity.Video {
+	return c.service.FindAll()
+}
+
 func (c *controller) Save(ctx *gin.Context) error {
 	var video entity.Video
-	err := ctx.BindJSON(&video)
+	err := ctx.ShouldBindJSON(&video)
 	if err != nil {
 		return err
 	}
-
+	err = validate.Struct(video)
+	if err != nil {
+		return err
+	}
 	c.service.Save(video)
 	return nil
-}
-
-func (c *controller) FindAll() []entity.Video {
-	return c.service.FindAll()
 }
 
 func (c *controller) ShowAll(ctx *gin.Context) {
@@ -46,6 +52,5 @@ func (c *controller) ShowAll(ctx *gin.Context) {
 		"title":  "Video Page",
 		"videos": videos,
 	}
-
 	ctx.HTML(http.StatusOK, "index.html", data)
 }

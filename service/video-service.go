@@ -1,12 +1,9 @@
 package service
 
-import "github.com/nidhish1/profile/entity"
-
-// save
-//list of videos
+import "gitlab.com/pragmaticreviews/golang-gin-poc/entity"
 
 type VideoService interface {
-	Save(video entity.Video) entity.Video
+	Save(entity.Video) entity.Video
 	FindAll() []entity.Video
 }
 
@@ -15,7 +12,9 @@ type videoService struct {
 }
 
 func New() VideoService {
-	return &videoService{}
+	return &videoService{
+		videos: []entity.Video{},
+	}
 }
 
 func (service *videoService) Save(video entity.Video) entity.Video {

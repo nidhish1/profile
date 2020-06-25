@@ -1,0 +1,10 @@
+{{ template "header.html"}}
+
+{{range .videos}}
+
+    <p> {{ .Title}}</p>
+    <p>{{ .Description}}</p>
+
+    <hr>
+{{end}}
+{{template "footer.html"}}
